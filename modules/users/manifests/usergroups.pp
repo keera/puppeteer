@@ -1,4 +1,5 @@
 class usergroups{
+
     #define the server nodes
     $group = {
             none => "none",

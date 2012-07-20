@@ -1,18 +1,14 @@
 class virtualuser{
 
-    group { 'developers':
-        gid         => 2002,
-        name        => 'developers',
-        system      => false,
-    }
+    define localuser ($uid, $gid, $pass, $team, $groups, $sshkey=""){
 
-    define localuser ($uid, $pass, $team, $groups, $sshkey=""){
-
+            #use regex to associate dn to group
             $group = $fqdn ? {
                 /(ubuntu)/ => "test",
                 default   => "blah",
             }
 
+            #set status for user and user home dir
             if $group in $groups or 'all' in $groups{
                 $user_status = 'present'
                 $file_status = 'directory'
@@ -24,11 +20,10 @@ class virtualuser{
             user { $title:
                 ensure => $user_status,
                 uid    => $uid,
-                gid    =>  2002,
+                gid    =>  $gid,
                 password => $pass,
                 shell   =>  '/bin/bash',
                 home   => "/home/$title",
-                require =>  Group[$team],
             }
 
             file { "/home/$title":
