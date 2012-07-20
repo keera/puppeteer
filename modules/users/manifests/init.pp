@@ -5,13 +5,15 @@ class users{
     virtualuser::localuser {"john":
         uid    => 2000,
         pass   => "harhar",
-        groups => [ $usergroups::group[true_test] ],
+        team   => "developers",
+        groups => [ $usergroups::group[none] ],
         sshkey => "abcdeSSHKEYfg",
     }
 
     virtualuser::localuser {"joe":
         uid    => 2001,
         pass   => "harhar",
+        team   => "developers",
         groups => [ $usergroups::group[none] ],
         sshkey => "1234SSHKEYfg",
     }
