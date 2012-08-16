@@ -1,3 +1,21 @@
+# == Class: users
+# This is where all the resources (teams, users) are defined. First, the teams are created, and are then referenced by the users. Most of the changes will occur in the users group attribute, which determine individual access to servers.
+# === Examples
+# ==== Creating a group
+#    teams::localteam{$teams::tech_support[title]:
+#        gid => $teams::tech_support[id],
+#    }
+# ==== Creating a user
+#    virtualuser::localuser {'dtillery':
+#        uid     => 2002,
+#        gid     => $teams::development_L2[id],
+#        team    => $teams::development_L2[title],
+#        pass    => 'david',
+#        groups  => [all],
+#        sshkey  => $sshkeys::users::dtillery,
+#        require => Teams::Localteam[$teams::development_L2[title]],
+#    }
+#
 class users{
 
     include teams

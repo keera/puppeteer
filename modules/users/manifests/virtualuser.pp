@@ -1,3 +1,31 @@
+# == Define: localuser
+# Creates an authorized user on a client
+# == Parameters
+# [*uid*]
+#   id for the user. Must be unique on the client.
+# [*gid*]
+#   id of the group that the user belongs to on the client.
+# [*team*]
+#   name of the group that the user belongs to on the client.
+# [*pass*]
+#   password authentication.
+# [*groups*]
+#   the environment groups that the user has access to.
+# [*sshkey*]
+#   the public key of the user
+# === Examples
+# ====  Configuring the group matching for individual servers
+#   $client_group = $fqdn ? { 
+#                /^.*-app-.*-staging.company.net$/ => 'app_staging',
+#                /^.*-app-.*-production.company.net$/ => 'app_qa',
+#                default    => undef,
+#           }
+# === Authors
+# Alan Lin <alin@2tor.com>
+# Gregory Damiani <gdamiani@2tor.com>
+# === Copyright
+# Copyright 2012 2tor
+#
 class virtualuser{
 
     define localuser ($uid, $gid, $team, $pass, $groups, $sshkey=""){

@@ -1,3 +1,20 @@
+# == Class: teams
+# == Define: localteam
+# all teams correspond to linux groups. The localteam resource definition prevents name interference with the environment/server groups. A user is part of a QA server group, and a user can also be a part of a system level group, which is a team. The class definition abstracts away the concrete definition of group data and allows one to simply refer to a group by name. It also allows group information to be changed in a single place.
+# === Parameters
+# [*gid*]
+#   The group id of the team, which must be unique on a client machine.
+# === Examples
+# ==== Defining a team in class
+#   $ninjas = {
+#       id    => 2000,
+#       title => 'ninjas',
+#   }
+# === Authors
+# Alan Lin <alin@2tor.com>
+# Gregory Damiani <gdamiani@2tor.com>
+# Copyright 2012 2tor
+#
 class teams{
 
     $development_L1 = {
