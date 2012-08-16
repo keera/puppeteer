@@ -4,20 +4,16 @@ class virtualuser{
 
             #use regex to associate dn to group
             $client_group = $fqdn ? {
-                /(specific_lms_staging)/ => 'lms_staging',
-                /(specific_lms_qa)/ => 'lms_qa',
-                /(specific_lms_prod)/ => 'lms_prod',
-                /(specific_mkting_staging)/ => 'mkting_staging',
-                /(specific_mkting_qa)/ => 'mkting_qa',
-                /(specific_mkting_prod)/ => 'mkting_prod',
-                /(specific_oars_staging)/ => 'oars_staging',
-                /(specific_oars_qa)/ => 'oars_qa',
-                /(specific_oars_prod)/ => 'oars_prod',
-                /(staging)/ => 'staging_all',
-                /(qa)/ => 'qa_all',
-                /(prod)/ => 'prod_all',
-                /(ubuntu)/ => 'test',
-                default    => 'blah',
+                /^.*-lms-.*-stg.2tor.net$/ => 'lms_staging',
+                /^.*-lms-.*-qa.2tor.net$/ => 'lms_qa',
+                /^.*-lms-.*-prod.2tor.net$/ => 'lms_prod',
+                /^.*-mktg-.*-stg.2tor.net$/ => 'mktg_staging',
+                /^.*-mktg-.*-qa.2tor.net$/ => 'mktg_qa',
+                /^.*-mktg-.*-prod.2tor.net$/ => 'mktg_prod',
+                /^.*-oars-.*-stg.2tor.net$/ => 'oars_staging',
+                /^.*-oars-.*-qa.2tor.net$/ => 'oars_qa',
+                /^.*-oars-.*-prod.2tor.net$/ => 'oars_prod',
+                default    => undef,
             }
 
             #set status for user and user home dir

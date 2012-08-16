@@ -2,7 +2,6 @@ class users{
 
     include teams
     include virtualuser
-    include usergroups
     include sshkeys::users
 
     #create clientside user groups
@@ -16,7 +15,7 @@ class users{
         gid     => $teams::development_L2[id],
         team    => $teams::development_L2[title],
         pass    => 'david',
-        groups  => [$usergroups::group[all]],
+        groups  => [lms_staging],
         sshkey  => $sshkeys::users::dtillery,
         require => Teams::Localteam[$teams::development_L2[title]],
     }
@@ -26,7 +25,7 @@ class users{
         gid     => $teams::development_L2[id],
         team    => $teams::development_L2[title],
         pass    => 'conlin',
-        groups  => [$usergroups::group[all]],
+        groups  => [lms_qa],
         sshkey  => $sshkeys::users::cconlin,
         require => Teams::Localteam[$teams::development_L2[title]],
     }
@@ -36,7 +35,7 @@ class users{
         gid     => $teams::development_L2[id],
         team    => $teams::development_L2[title],
         pass    => 'ganeshan',
-        groups  => [$usergroups::group[all]],
+        groups  => [all],
         sshkey  => $sshkeys::users::rganeshan,
         require => Teams::Localteam[$teams::development_L2[title]],
     }
@@ -46,8 +45,8 @@ class users{
         gid     => $teams::development_L2[id],
         team    => $teams::development_L2[title],
         pass    => 'oneill',
-        groups  => [$usergroups::group[all]],
-        sshkey  => $sshkeys::users::ryanoneill
+        groups  => [none],
+        sshkey  => $sshkeys::users::ryanoneill,
         require => Teams::Localteam[$teams::development_L2[title]],
     }
 
