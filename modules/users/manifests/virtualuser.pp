@@ -15,7 +15,7 @@
 #   the public key of the user
 # === Examples
 # ====  Configuring the group matching for individual servers
-#   $client_group = $fqdn ? { 
+#   $client = $fqdn ? { 
 #                /^.*-app-.*-staging.company.net$/ => 'app_staging',
 #                /^.*-app-.*-production.company.net$/ => 'app_qa',
 #                default    => undef,

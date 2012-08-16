@@ -1,3 +1,6 @@
+# == Class: users::sshkeys::users
+# This is where all SSH keys are stored. SSH keys are friggin long and messy, so we keep it out of the initialization file. When you paste a key, make sure to leave out the "ssh-rsa" as well as the "==" and characteres following in, such as the email. Make sure that the variable is unique - you can simply user their organization email.
+#
 class users::sshkeys::users{
 
 #internal developers L2
