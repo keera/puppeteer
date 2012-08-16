@@ -1,4 +1,4 @@
-class virtualteam{
+class teams{
 
     $development = {
         id   => 2002,
@@ -15,6 +15,7 @@ class virtualteam{
         title => 'production',
     }
 
+    #team resource
     define localteam($gid){
 
         group { "$title":
