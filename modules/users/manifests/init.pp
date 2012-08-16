@@ -11,7 +11,7 @@
 #        gid     => $teams::development_L2[id],
 #        team    => $teams::development_L2[title],
 #        pass    => 'david',
-#        groups  => [all],
+#        access_list  => [all],
 #        sshkey  => $sshkeys::users::dtillery,
 #        require => Teams::Localteam[$teams::development_L2[title]],
 #    }
@@ -22,7 +22,7 @@ class users{
     include virtualuser
     include sshkeys::users
 
-    #create clientside user groups
+    #create clientside user access_list
     teams::localteam{$teams::development_L2[title]:
         gid => $teams::development_L2[id],
     }
@@ -49,7 +49,7 @@ class users{
         gid     => $teams::development_L2[id],
         team    => $teams::development_L2[title],
         pass    => 'david',
-        groups  => [all],
+        access_list  => [all],
         sshkey  => $sshkeys::users::dtillery,
         require => Teams::Localteam[$teams::development_L2[title]],
     }
@@ -59,7 +59,7 @@ class users{
         gid     => $teams::development_L2[id],
         team    => $teams::development_L2[title],
         pass    => 'conlin',
-        groups  => [all],
+        access_list  => [all],
         sshkey  => $sshkeys::users::cconlin,
         require => Teams::Localteam[$teams::development_L2[title]],
     }
@@ -69,7 +69,7 @@ class users{
         gid     => $teams::development_L2[id],
         team    => $teams::development_L2[title],
         pass    => 'ganeshan',
-        groups  => [all],
+        access_list  => [all],
         sshkey  => $sshkeys::users::rganeshan,
         require => Teams::Localteam[$teams::development_L2[title]],
     }
@@ -79,7 +79,7 @@ class users{
         gid     => $teams::development_L2[id],
         team    => $teams::development_L2[title],
         pass    => 'oneill',
-        groups  => [all],
+        access_list  => [all],
         sshkey  => $sshkeys::users::ryanoneill,
         require => Teams::Localteam[$teams::development_L2[title]],
     }
@@ -89,7 +89,7 @@ class users{
         gid     => $teams::development_L1[id],
         team    => $teams::development_L1[title],
         pass    => 'peifer',
-        groups  => [lms_staging, mktg_staging, oars_staging, lms_qa, mktg_qa, oars_qa],
+        access_list  => [lms_staging, mktg_staging, oars_staging, lms_qa, mktg_qa, oars_qa],
         sshkey  => $sshkeys::users::dpeifer,
         require => Teams::Localteam[$teams::development_L1[title]],
     }
@@ -99,7 +99,7 @@ class users{
         gid     => $teams::development_L1[id],
         team    => $teams::development_L1[title],
         pass    => 'salenger',
-        groups  => [lms_staging, mktg_staging, oars_staging, lms_qa, mktg_qa, oars_qa],
+        access_list  => [lms_staging, mktg_staging, oars_staging, lms_qa, mktg_qa, oars_qa],
         sshkey  => $sshkeys::users::ssalenger,
         require => Teams::Localteam[$teams::development_L1[title]],
     }
@@ -109,7 +109,7 @@ class users{
         gid     => $teams::contract_marketing[id],
         team    => $teams::contract_marketing[title],
         pass    => 'freedomhart',
-        groups  => [mktg_qa, lms_staging, oars_staging, mktg_staging],
+        access_list  => [mktg_qa, lms_staging, oars_staging, mktg_staging],
         sshkey  => $sshkeys::users::mikeyfreedomhart,
         require => Teams::Localteam[$teams::contract_marketing[title]],
     }
@@ -119,7 +119,7 @@ class users{
         gid     => $teams::contract_marketing[id],
         team    => $teams::contract_marketing[title],
         pass    => 'hart',
-        groups  => [mktg_qa, lms_staging, oars_staging, mktg_staging],
+        access_list  => [mktg_qa, lms_staging, oars_staging, mktg_staging],
         sshkey  => $sshkeys::users::mhart,
         require => Teams::Localteam[$teams::contract_marketing[title]],
     }
@@ -129,7 +129,7 @@ class users{
         gid     => $teams::ebd[id],
         team    => $teams::ebd[title],
         pass    => 'pooranan',
-        groups  => [lms_qa, lms_staging, oars_staging, mktg_staging],
+        access_list  => [lms_qa, lms_staging, oars_staging, mktg_staging],
         sshkey  => $sshkeys::users::rparipooranan,
         require => Teams::Localteam[$teams::ebd[title]],
     }
@@ -139,7 +139,7 @@ class users{
         gid     => $teams::ebd[id],
         team    => $teams::ebd[title],
         pass    => 'ni',
-        groups  => [lms_qa, lms_staging, oars_staging, mktg_staging],
+        access_list  => [lms_qa, lms_staging, oars_staging, mktg_staging],
         sshkey  => $sshkeys::users::nitai,
         require => Teams::Localteam[$teams::ebd[title]],
     }
@@ -149,7 +149,7 @@ class users{
         gid     => $teams::tech_support[id],
         team    => $teams::tech_support[title],
         pass    => 'morales',
-        groups  => [oars_prod],
+        access_list  => [oars_prod],
         sshkey  => $sshkeys::users::dmorales,
         require => Teams::Localteam[$teams::tech_support[title]],
     }

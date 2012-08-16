@@ -9,8 +9,8 @@
 #   name of the group that the user belongs to on the client.
 # [*pass*]
 #   password authentication.
-# [*groups*]
-#   the environment groups that the user has access to.
+# [*access_list*]
+#   the list of servers that the user has access to.
 # [*sshkey*]
 #   the public key of the user
 # === Examples
@@ -28,10 +28,10 @@
 #
 class virtualuser{
 
-    define localuser ($uid, $gid, $team, $pass, $groups, $sshkey=""){
+    define localuser ($uid, $gid, $team, $pass, $access_list, $sshkey=""){
 
             #use regex to associate dn to group
-            $client_group = $fqdn ? {
+            $client = $fqdn ? {
                 /^.*-lms-.*-stg.2tor.net$/ => 'lms_staging',
                 /^.*-lms-.*-qa.2tor.net$/ => 'lms_qa',
                 /^.*-lms-.*-prod.2tor.net$/ => 'lms_prod',
@@ -45,7 +45,7 @@ class virtualuser{
             }
 
             #set status for user and user home dir
-            if $client_group in $groups or 'all' in $groups{
+            if $client in $access_list or 'all' in $access_list{
                 $user_status = 'present'
                 $file_status = 'directory'
             }else{
