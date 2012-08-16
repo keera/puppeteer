@@ -4,6 +4,18 @@ class virtualuser{
 
             #use regex to associate dn to group
             $client_group = $fqdn ? {
+                /(specific_lms_staging)/ => 'lms_staging',
+                /(specific_lms_qa)/ => 'lms_qa',
+                /(specific_lms_prod)/ => 'lms_prod',
+                /(specific_mkting_staging)/ => 'mkting_staging',
+                /(specific_mkting_qa)/ => 'mkting_qa',
+                /(specific_mkting_prod)/ => 'mkting_prod',
+                /(specific_oars_staging)/ => 'oars_staging',
+                /(specific_oars_qa)/ => 'oars_qa',
+                /(specific_oars_prod)/ => 'oars_prod',
+                /(staging)/ => 'staging_all',
+                /(qa)/ => 'qa_all',
+                /(prod)/ => 'prod_all',
                 /(ubuntu)/ => 'test',
                 default    => 'blah',
             }
